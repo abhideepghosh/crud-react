@@ -12,7 +12,7 @@ const Login = () => {
       // Username & Password Display In Console
       console.log(username, password);
       // URL for login
-      const url = "https://crm1.1point1.com/api/method/login";
+      const url = "https://crm1.1point1.in/api/method/login";
       // Method = Post
       const method = "POST";
       // Headers
