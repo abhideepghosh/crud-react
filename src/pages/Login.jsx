@@ -8,6 +8,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      if (!username || !password) return;
       // Username & Password Display In Console
       console.log(username, password);
       // URL for login
@@ -45,7 +46,7 @@ const Login = () => {
           <input
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            type="email"
+            type="text"
             className="form-control"
             id="InputEmail1"
             aria-describedby="emailHelp"
