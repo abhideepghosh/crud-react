@@ -7,19 +7,33 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(username, password);
-    /*
     try {
-      // In case API uses GET
-      // const response = await fetch("http://localhost:3000/users");
-      // const data = await response.json();
-      // console.log(data);
-
-      // In case API uses Post
+      // Username & Password Display In Console
+      console.log(username, password);
+      // URL for login
+      const url = "https://crm1.1point1.com/api/method/login";
+      // Method = Post
+      const method = "POST";
+      // Headers
+      const headers = {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      };
+      // Converting body object to JSON string
+      const body = JSON.stringify({ usr: username, pwd: password });
+      // Sending post-fetch request to the server using url and options
+      const response = await fetch(url, {
+        method,
+        headers,
+        body,
+      });
+      // Converting response into json
+      const data = await response.json();
+      // Displaying data in console
+      console.log(data);
     } catch (err) {
       console.log(err);
     }
-    */
   };
 
   return (
