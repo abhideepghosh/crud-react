@@ -17,7 +17,8 @@ const Login = () => {
       const method = "POST";
       // Headers
       const headers = {
-        Accept: "application/json",
+        // prettier-ignore
+        "Accept": "application/json",
         "Content-Type": "application/json",
       };
       // Converting body object to JSON string
