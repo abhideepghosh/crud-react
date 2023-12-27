@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "./../styles/Login.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -35,12 +37,15 @@ const Login = () => {
       console.log(data);
       if (data.message === "Logged In") {
         sessionStorage.setItem(username, password);
+        navigate(`/dashboard/${data.full_name}`);
       } else {
         alert("Invalid Credentials");
       }
     } catch (err) {
       console.log(err);
     }
+    //   // Mocking Behaviour
+    //   navigate("/dashboard/Administrator");
   };
 
   return (
