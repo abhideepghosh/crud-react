@@ -33,6 +33,11 @@ const Login = () => {
       const data = await response.json();
       // Displaying data in console
       console.log(data);
+      if (data.message === "Logged In") {
+        sessionStorage.setItem(username, password);
+      } else {
+        alert("Invalid Credentials");
+      }
     } catch (err) {
       console.log(err);
     }
