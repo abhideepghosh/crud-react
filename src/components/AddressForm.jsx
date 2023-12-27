@@ -33,9 +33,7 @@ const AddressForm = () => {
       <div className="form-group">
         <label htmlFor="state">State:</label>
         <select className="form-control" id="state" name="state" required>
-          <option defaultValue={`Select your state`} disabled>
-            Select your state
-          </option>
+          <option defaultValue={`Select your state`}>Select your state</option>
           <option value="Andhra Pradesh">Andhra Pradesh</option>
           <option value="Arunachal Pradesh">Arunachal Pradesh</option>
           <option value="Assam">Assam</option>
