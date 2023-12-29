@@ -49,7 +49,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container border border-light rounded shadow-lg p-3 mb-5 bg-white rounded">
       <h1>Login To The Dashboard</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
