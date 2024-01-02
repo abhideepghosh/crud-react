@@ -1,8 +1,15 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 const BankForm = () => {
+  const userAddress = useSelector((state) => state.user.address);
+  const userPincode = useSelector((state) => state.user.pincode);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(userAddress, userPincode);
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="form-group">
         <label htmlFor="bankDetails">Bank Details:</label>
         <input

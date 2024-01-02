@@ -2,6 +2,7 @@ import { useState } from "react";
 import UserForm from "../components/UserForm";
 import AddressForm from "../components/AddressForm";
 import BankForm from "../components/BankForm";
+import SendDataButton from "../components/SendDataButton";
 
 const Dashboard = () => {
   const [userDetailsVisibility, setUserDetailsVisibility] = useState(true);
@@ -51,6 +52,7 @@ const Dashboard = () => {
       {userDetailsVisibility && <UserForm />}
       {addressDetailsVisibility && <AddressForm />}
       {bankDetailsVisibility && <BankForm />}
+      <SendDataButton />
     </div>
   );
 };

@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getUserDetails } from "../features/userSlice";
 
 const UserForm = () => {
+  const userName = useSelector((state) => state.user.name);
+  const userAge = useSelector((state) => state.user.age);
+  const dispatch = useDispatch();
+  const [name, setName] = useState(userName);
+  const [age, setAge] = useState(userAge);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      getUserDetails({
+        name,
+        age,
+      })
+    );
+  };
   return (
     <div className="container">
       <h2>User Information Form</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
             type="text"
             className="form-control"
             id="name"
@@ -20,43 +40,17 @@ const UserForm = () => {
         <div className="form-group">
           <label htmlFor="age">Age:</label>
           <input
-            type="number"
+            value={age}
+            onChange={(e) => {
+              setAge(e.target.value);
+            }}
+            type="text"
             className="form-control"
             id="age"
             name="age"
             required
           />
           <div className="invalid-feedback">Please enter a valid age.</div>
-        </div>
-
-        <div className="form-group">
-          <label>Gender:</label>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="radio"
-              name="gender"
-              id="male"
-              value="male"
-              required
-            />
-            <label className="form-check-label" htmlFor="male">
-              Male
-            </label>
-          </div>
-          <div className="form-check">
-            <input
-              className="form-check-input"
-              type="radio"
-              name="gender"
-              id="female"
-              value="female"
-              required
-            />
-            <label className="form-check-label" htmlFor="female">
-              Female
-            </label>
-          </div>
         </div>
 
         <button type="submit" className="btn btn-primary">

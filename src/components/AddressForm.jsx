@@ -1,23 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getUserAddress } from "../features/userSlice";
 
 const AddressForm = () => {
+  const dispatch = useDispatch();
+  const userName = useSelector((state) => state.user.name);
+  const userAddress = useSelector((state) => state.user.address);
+  const userPincode = useSelector((state) => state.user.pincode);
+  const [address, setAddress] = useState(userAddress);
+  const [pincode, setPincode] = useState(userPincode);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(
+      getUserAddress({
+        address,
+        pincode,
+      })
+    );
+  };
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
+      <h1>Greetings {userName ? userName : "Guest"}!</h1>
       <div className="form-group">
         <label htmlFor="address">Address:</label>
-        <textarea
+        <input
+          value={address}
+          onChange={(e) => {
+            setAddress(e.target.value);
+          }}
           className="form-control"
           id="address"
           name="address"
-          rows="2"
           required
-        ></textarea>
+        />
         <div className="invalid-feedback">Please enter your address.</div>
       </div>
 
       <div className="form-group">
         <label htmlFor="pincode">Pincode:</label>
         <input
+          value={pincode}
+          onChange={(e) => {
+            setPincode(e.target.value);
+          }}
           type="text"
           className="form-control"
           id="pincode"
